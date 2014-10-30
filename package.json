@@ -10,8 +10,7 @@
     "postinstall": "[ -d \"lib\" ] || (echo \"Compiling coffee sources\" && coffee -c -o lib src && coffee -c index.coffee)"
   },
   "bugs": {
-    "url": "https://github.com/sekko27/node-apa-api/issues",
-    "email": "sekko272727@gmail.com"
+    "url": "https://github.com/sekko27/node-apa-api/issues"
   },
   "repository": {
     "type": "git",
@@ -25,8 +24,18 @@
   ],
   "author": "Sekko <sekko272727@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sekko27/node-apa-api/issues"
+  "dependencies": {
+    "async": "~0.9.0",
+    "lodash": "~2.4.1",
+    "moment": "~2.8.3",
+    "wire-context-helper": "~0.1.25",
+    "q": "~1.0.1",
+    "wire": "~0.10.9"
   },
-  "homepage": "https://github.com/sekko27/node-apa-api"
+  "devDependencies": {
+    "chai-as-promised": "~4.1.1",
+    "chai": "~1.9.2",
+    "mocha": "~2.0.1",
+    "load-grunt-tasks": "~1.0.0"
+  }
 }
