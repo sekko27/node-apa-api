@@ -1,0 +1,25 @@
+{
+  "name": "node-apa-api",
+  "version": "0.0.1",
+  "description": "Amazon Product Advertising API client",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec --recursive tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sekko27/node-apa-api.git"
+  },
+  "keywords": [
+    "Amazon",
+    "Product",
+    "Advertising",
+    "API"
+  ],
+  "author": "Sekko <sekko272727@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sekko27/node-apa-api/issues"
+  },
+  "homepage": "https://github.com/sekko27/node-apa-api"
+}
