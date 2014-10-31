@@ -64,9 +64,7 @@ Service provides methods (feature enrichment in progress):
 Using defaults
 
 ```coffeescript
-{APIMeta} = require 'apa-api'
-{Credential} = require 'apa-api'
-{Service} = require 'apa-api'
+{APIMeta, Crendential, Service} = require 'apa-api'
 
 meta = new APIMeta()
 credential = new Credential('access', 'secret', 'associate')
