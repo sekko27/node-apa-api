@@ -1,12 +1,12 @@
 {
   "name": "node-apa-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Amazon Product Advertising API client",
   "homepage": "https://github.com/sekko27/node-apa-api",
   "main": "index.js",
   "scripts": {
     "test": "mocha -R spec --recursive tests",
-    "prepublish": "coffee -c -o lib/ src/ && coffee -c index.coffee",
+    "prepublish": "coffee -c -o lib src && coffee -c index.coffee && coffee -c tests tests-src",
     "postinstall": "[ -d \"lib\" ] || (echo \"Compiling coffee sources\" && coffee -c -o lib src && coffee -c index.coffee)"
   },
   "bugs": {
