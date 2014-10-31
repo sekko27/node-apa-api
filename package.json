@@ -38,6 +38,8 @@
     "chai-as-promised": "~4.1.1",
     "chai": "~1.9.2",
     "mocha": "~2.0.1",
-    "load-grunt-tasks": "~1.0.0"
+    "load-grunt-tasks": "~1.0.0",
+    "xml2js": "~0.4.4",
+    "concat-stream": "~1.4.6"
   }
 }

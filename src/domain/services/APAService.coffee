@@ -1,8 +1,10 @@
+RequestSigner = require './RequestSigner'
 ItemLookupRequest = require './../models/ItemLookupRequest'
-request = require 'request'
+defaultClient = require 'request'
 
 class APAService
-  signer: null
+  signer: new RequestSigner()
+  client: defaultClient
 
   constructor: (apiMeta, credential) ->
     Object.defineProperty @, 'apiMeta', get: -> apiMeta
@@ -14,6 +16,6 @@ class APAService
 
   request: (request) ->
     signedUrl = @signer.sign(request)
-    request.get(signedUrl)
+    @client(signedUrl)
 
 module.exports = APAService

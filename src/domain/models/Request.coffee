@@ -1,8 +1,8 @@
 moment = require 'moment'
 
 class Request
-  constructor: (apiMeta, credential, operation) ->
-    now = moment().format('Z')
+  constructor: (apiMeta, credential, operation, now) ->
+    now = now ? moment().format('YYYY-MM-DDTHH:mm:ssZ')
     Object.defineProperty @, 'apiMeta', get: -> apiMeta
     Object.defineProperty @, 'credential', get: -> credential
     Object.defineProperty @, 'operation', get: -> operation
