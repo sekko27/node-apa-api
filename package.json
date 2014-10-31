@@ -31,7 +31,8 @@
     "wire-context-helper": "~0.1.25",
     "q": "~1.0.1",
     "wire": "~0.10.9",
-    "URIjs": "~1.14.1"
+    "URIjs": "~1.14.1",
+    "request": "~2.47.0"
   },
   "devDependencies": {
     "chai-as-promised": "~4.1.1",

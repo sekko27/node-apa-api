@@ -4,11 +4,15 @@ crypto = require 'crypto'
 
 class RequestSigner
   sign: (request) ->
+    am = request.apiMeta
     params = request.asParams()
     normalized = normalize(params)
-    queryStringBase = prefix(request.apiMeta).concat(normalized).join('\n')
-    signature = digest(queryStringBase, request.credential)
-    "#{queryStringBase}&Signature=#{signature}"
+    source = prefix(am).concat([normalized]).join('\n')
+    signature = digest(source, request.credential)
+
+    "#{am.protocol}://#{am.endPoint}#{am.uri}?#{normalized}&Signature=#{signature}"
+
+module.exports = RequestSigner
 
 ##################
 # PRIVATE

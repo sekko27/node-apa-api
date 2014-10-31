@@ -14,7 +14,7 @@ class Request
     Operation: @operation
     Service: @apiMeta.service
     Timestamp: @timestamp
-    Version: @apiMeta.Version
+    Version: @apiMeta.version
 
 
 
