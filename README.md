@@ -3,18 +3,18 @@ node-apa-api
 
 Amazon Product Advertising API client
 
-= Goals
+# Goals
 
 Module provides easy access to the Amazon Product Advertising API:
 
 * [REST Request Anatomy](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/AnatomyOfaRESTRequest.html)
 * [Request Signatures](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/rest-signature.html)
 
-= Usage
+# Usage
 
-== Models
+## Models
 
-=== APIMeta value object
+### APIMeta value object
 
 Represents API access details:
 
@@ -32,7 +32,7 @@ Where
 * method - Default to **GET**
 * version - Default to **2011-08-11**
 
-=== Credential
+### Credential
 
 Represents API authentication data:
 
@@ -41,7 +41,7 @@ Represents API authentication data:
 credential = new Credential(accessKey, secretKey, associateTag)
 ```
 
-== Service
+## Service
  
 Use this client to the Amazon Product Advertising service.
 
@@ -59,7 +59,7 @@ Service provides methods (feature enrichment in progress):
 
 * [itemLookup](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/EX_LookupbyISBN.html) - itemLookup(itemId)
 
-= Usage
+# Usage
 
 Using defaults
 
