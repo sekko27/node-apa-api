@@ -6,7 +6,7 @@ class BooleanParameterDefinition extends ParameterDefinition
     super(name, defaultValue, required)
 
   validate: (value) ->
-    throw "Invalid boolean value for #{@name} parameter: #{value}" if not _.isBoolean(value)
+    throw new Error("Invalid boolean value for #{@name} parameter: #{value}") if not _.isBoolean(value)
     value
 
 module.exports = BooleanParameterDefinition

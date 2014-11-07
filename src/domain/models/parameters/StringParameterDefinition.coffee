@@ -6,7 +6,7 @@ class StringParameterDefinition extends ParameterDefinition
     super(name, defaultValue, required)
 
   validate: (value) ->
-    throw "Invalid string value for #{@name} parameter: #{value}" if not _.isString(value)
+    throw new Error("Invalid string value for #{@name} parameter: #{value}") if not _.isString(value)
     value
 
 module.exports = StringParameterDefinition

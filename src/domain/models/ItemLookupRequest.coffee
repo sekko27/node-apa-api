@@ -3,7 +3,7 @@ Request = require './Request'
 ItemLookupRequestParameters = require './ItemLookupRequestParameters'
 
 class ItemLookupRequest extends Request
-  constructor: (apiMeta, credential, now, params) ->
+  constructor: (apiMeta, credential, params, now) ->
     super(apiMeta, credential, 'ItemLookup', now)
     @member('params', new ItemLookupRequestParameters(params))
 

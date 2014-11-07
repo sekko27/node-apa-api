@@ -10,8 +10,8 @@ class APAService
     Object.defineProperty @, 'apiMeta', get: -> apiMeta
     Object.defineProperty @, 'credential', get: -> credential
 
-  itemLookup: (itemId) ->
-    request = new ItemLookupRequest(@apiMeta, @credential, itemId)
+  itemLookup: (params) ->
+    request = new ItemLookupRequest(@apiMeta, @credential, params)
     @request(request)
 
   request: (request) ->

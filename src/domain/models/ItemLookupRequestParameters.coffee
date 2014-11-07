@@ -69,11 +69,15 @@ class ItemLookupRequestParameters
   constructor: (@parameters) ->
 
   validate: ->
-    keys = _.pluck DEFINITIONS, 'name'
-    values = _.map DEFINITIONS, (definition) =>
-      name = definition.name
-      definition.parameter(@parameters[name])
-    _.zipObject(keys, values)
+    _.reduce DEFINITIONS, reducer(@parameters), {}
 
 module.exports = ItemLookupRequestParameters
+
+reducer = (params) ->
+  (memo, definition) ->
+    name = definition.name
+    value = definition.parameter(params[name]).value
+    if not _.isUndefined(value)
+      memo[name] = value
+    memo
 

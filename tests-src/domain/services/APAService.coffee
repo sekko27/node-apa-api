@@ -33,4 +33,4 @@ describe 'RequestSigner', ->
         assert.equal result.ItemLookupResponse.Items[0].Request[0].IsValid[0], 'True'
         done()
 
-    apa.itemLookup('0124166903').pipe(stream)
+    apa.itemLookup(ItemId: '0124166903').pipe(stream)
