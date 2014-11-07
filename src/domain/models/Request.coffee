@@ -1,12 +1,13 @@
+ValueObject = require './ValueObject'
 moment = require 'moment'
 
-class Request
+class Request extends ValueObject
   constructor: (apiMeta, credential, operation, now) ->
     now = now ? moment().format('YYYY-MM-DDTHH:mm:ssZ')
-    Object.defineProperty @, 'apiMeta', get: -> apiMeta
-    Object.defineProperty @, 'credential', get: -> credential
-    Object.defineProperty @, 'operation', get: -> operation
-    Object.defineProperty @, 'timestamp', get: -> now
+    @member('apiMeta', apiMeta)
+    @member('credential', credential)
+    @member('operation', operation)
+    @member('timestamp', now)
 
   asParams: ->
     AssociateTag: @credential.associateTag

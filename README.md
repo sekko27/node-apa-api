@@ -57,7 +57,7 @@ Service use the following injected members:
 
 Service provides methods (feature enrichment in progress):
 
-* [itemLookup](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/EX_LookupbyISBN.html) - itemLookup(itemId)
+* [itemLookup](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/ItemLookup.html) - itemLookup(itemId)
 
 # Usage
 
