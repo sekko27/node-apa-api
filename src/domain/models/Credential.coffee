@@ -1,7 +1,9 @@
-class Credential
+ValueObject = require './ValueObject'
+
+class Credential extends ValueObject
   constructor: (accessKey, secretKey, associateTag) ->
-    Object.defineProperty @, 'accessKey', get: -> accessKey
-    Object.defineProperty @, 'secretKey', get: -> secretKey
-    Object.defineProperty @, 'associateTag', get: -> associateTag
+    @member 'accessKey', accessKey
+    @member 'secretKey', secretKey
+    @member 'associateTag', associateTag
 
 module.exports = Credential

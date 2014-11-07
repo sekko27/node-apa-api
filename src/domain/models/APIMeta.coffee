@@ -1,3 +1,5 @@
+ValueObject = require './ValueObject'
+
 DEFAULT_PROTOCOL = 'http'
 DEFAULT_ENDPOINT = 'webservices.amazon.com'
 DEFAULT_SERVICE  = 'AWSECommerceService'
@@ -5,7 +7,7 @@ DEFAULT_URI      = '/onca/xml'
 DEFAULT_METHOD   = 'GET'
 DEFAULT_VERSION  = '2011-08-01'
 
-class APIMeta
+class APIMeta extends ValueObject
   constructor: (
     protocol = DEFAULT_PROTOCOL
     endPoint = DEFAULT_ENDPOINT
@@ -14,11 +16,11 @@ class APIMeta
     method   = DEFAULT_METHOD
     version  = DEFAULT_VERSION
   ) ->
-    Object.defineProperty @, 'protocol', get: -> protocol
-    Object.defineProperty @, 'endPoint', get: -> endPoint
-    Object.defineProperty @, 'service', get: -> service
-    Object.defineProperty @, 'uri', get: -> uri
-    Object.defineProperty @, 'method', get: -> method
-    Object.defineProperty @, 'version', get: -> version
+    @member 'protocol', protocol
+    @member 'endPoint', endPoint
+    @member 'service', service
+    @member 'uri', uri
+    @member 'method', method
+    @member 'version', version
 
 module.exports = APIMeta

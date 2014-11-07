@@ -9,6 +9,6 @@ class RequestFactory
 
   newInstance: (operation, params) ->
     RequestClass = Operations.request(operation)
-    new RequestClass(@apiMeta, @credential, @timestampFactory(), params)
+    new RequestClass(@apiMeta, @credential, params, @timestampFactory())
 
 module.exports = RequestFactory
