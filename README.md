@@ -57,7 +57,8 @@ Service use the following injected members:
 
 Service provides methods (feature enrichment in progress):
 
-* [itemLookup](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/ItemLookup.html) - itemLookup(itemId)
+* [itemLookup](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/ItemLookup.html) - itemLookup(params) -
+The method checks parameters: mandatory parameters, type checking, defaults (do not send params equal to defaults).
 
 # Usage
 
@@ -69,5 +70,5 @@ Using defaults
 meta = new APIMeta()
 credential = new Credential('access', 'secret', 'associate')
 service = new Service(meta, service)
-service.itemLookup('0123456789').pipe(output)
+service.itemLookup(ItemId: '0123456789').pipe(output)
 ```
