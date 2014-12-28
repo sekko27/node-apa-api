@@ -21,7 +21,7 @@ describe 'RequestSigner', ->
     fs.readFile TestHelper.path('configs/test-credentials.json'), encoding: 'utf8', (err, config) ->
       return done(err) if err
       c = JSON.parse config
-      credential = new Credential c.accessKey, c.secretKey, c.associateTag
+      credential = new Credential c['accessKey'], c['secretKey'], c['associateTag']
       done()
 
   it 'should sign requests properly', ->
