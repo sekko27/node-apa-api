@@ -7,6 +7,7 @@ Request = require Helper.model('ItemLookupRequest')
 Signer = require Helper.service('RequestSigner')
 APAService = require Helper.Service('APA')
 {parseString} = require 'xml2js'
+selectn = require 'selectn'
 
 concat = require 'concat-stream'
 chai = require 'chai'
@@ -22,7 +23,7 @@ describe 'RequestSigner', ->
     fs.readFile TestHelper.path('configs/test-credentials.json'), encoding: 'utf8', (err, config) ->
       return done(err) if err
       c = JSON.parse config
-      credential = new Credential c.accessKey, c.secretKey, c.associateTag
+      credential = new Credential c.accessKey, c['secretKey'], c['associateTag']
       apa = new APAService(apiMeta, credential)
       done()
 
@@ -30,7 +31,7 @@ describe 'RequestSigner', ->
     stream = concat (response) ->
       parseString response, (err, result) ->
         return done(err) if err
-        assert.equal result.ItemLookupResponse.Items[0].Request[0].IsValid[0], 'True'
+        assert.equal selectn('ItemLookupResponse.Items.0.Request.0.IsValid.0', result), 'True'
         done()
 
     apa.itemLookup(ItemId: '0124166903').pipe(stream)

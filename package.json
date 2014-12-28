@@ -35,11 +35,12 @@
     "request": "~2.47.0"
   },
   "devDependencies": {
-    "chai-as-promised": "~4.1.1",
     "chai": "~1.9.2",
-    "mocha": "~2.0.1",
+    "chai-as-promised": "~4.1.1",
+    "concat-stream": "~1.4.6",
     "load-grunt-tasks": "~1.0.0",
-    "xml2js": "~0.4.4",
-    "concat-stream": "~1.4.6"
+    "mocha": "~2.0.1",
+    "selectn": "^0.9.6",
+    "xml2js": "~0.4.4"
   }
 }
