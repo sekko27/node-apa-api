@@ -3,7 +3,7 @@ ItemLookupRequest = require './ItemLookupRequest'
 
 Operations =
   request: (operation) ->
-    result = _.find @values, (value) -> value.operation == operation
+    result = _.find @values, operation: operation
     throw "Invalid operation: #{operation}" if not result
     result.request
 

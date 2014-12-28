@@ -8,7 +8,8 @@ class IntegerParameterDefinition extends ParameterDefinition
 
   validate: (value) ->
     intValue = parseInt(value)
-    throw new Error("Invalid integer parameter for #{@name} parameter: #{value}") if isNaN(value)
+    if isNaN(value)
+      throw new Error("Invalid integer parameter for #{@name} parameter: #{value}")
     _.each @['validators'], (validator) ->
       validator(intValue)
     intValue

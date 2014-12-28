@@ -8,7 +8,8 @@ class EnumParameterDefition extends ParameterDefinition
     @member('values', values)
 
   validate: (value) ->
-    throw new Error("Invalid parameter value for #{@name} enumeration parameter: #{value}") if not _.indexOf @values, value
+    if -1 == _.indexOf(@values, value)
+      throw new Error("Invalid parameter value for #{@name} enumeration parameter: #{value}")
     value
 
 module.exports = EnumParameterDefition
