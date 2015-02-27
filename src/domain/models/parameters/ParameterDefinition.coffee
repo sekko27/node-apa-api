@@ -8,11 +8,6 @@ class ParameterDefinition extends ValueObject
     @member('defaultValue', defaultValue)
     @member('required', required)
 
-  member: (name, value) ->
-    Object.defineProperty @, name,
-      get: -> value
-      enumerable: true
-
   parameter: (value) ->
     if _.isUndefined(value)
       throw new Error("Parameter #{@name} is required") if @required

@@ -1,5 +1,5 @@
 _ = require 'lodash'
-EnumParameterDefition = require './parameters/EnumParameterDefition'
+EnumParameterDefinition = require './parameters/EnumParameterDefinition'
 BooleanParameterDefinition = require './parameters/BooleanParameterDefinition'
 StringParameterDefinition = require './parameters/StringParameterDefinition'
 IntegerParameterDefinition = require './parameters/IntegerParameterDefinition'
@@ -12,7 +12,7 @@ DEFINITIONS = [
   new EnumParameterDefition 'MerchantId', 'Amazon', ['Amazon']
   new IntegerParameterDefinition 'RelatedItemPage', 1, []
   new EnumParameterDefition 'RelationshipType', undefined, [
-    'AuthorituTitle'
+    'AuthorityTitle'
     'DigitalMusicArranger'
     'DigitalMusicComposer'
     'DigitalMusicConductor'
