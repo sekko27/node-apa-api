@@ -5,13 +5,13 @@ StringParameterDefinition = require './parameters/StringParameterDefinition'
 IntegerParameterDefinition = require './parameters/IntegerParameterDefinition'
 
 DEFINITIONS = [
-  new EnumParameterDefition 'Condition', 'New', ['Used', 'Collectible', 'Refurbished', 'All', 'New']
-  new EnumParameterDefition 'IdType', 'ASIN', ['ASIN', 'SKU', 'EAN', 'ISBN', 'UPC']
+  new EnumParameterDefinition 'Condition', 'New', ['Used', 'Collectible', 'Refurbished', 'All', 'New']
+  new EnumParameterDefinition 'IdType', 'ASIN', ['ASIN', 'SKU', 'EAN', 'ISBN', 'UPC']
   new BooleanParameterDefinition 'IncludeReviewsSummary', true
   new StringParameterDefinition 'ItemId', undefined, true
-  new EnumParameterDefition 'MerchantId', 'Amazon', ['Amazon']
+  new EnumParameterDefinition 'MerchantId', 'Amazon', ['Amazon']
   new IntegerParameterDefinition 'RelatedItemPage', 1, []
-  new EnumParameterDefition 'RelationshipType', undefined, [
+  new EnumParameterDefinition 'RelationshipType', undefined, [
     'AuthorityTitle'
     'DigitalMusicArranger'
     'DigitalMusicComposer'
@@ -27,7 +27,7 @@ DEFINITIONS = [
     'Season'
     'Tracks'
   ]
-  new EnumParameterDefition 'SearchIndex', 'All', [
+  new EnumParameterDefinition 'SearchIndex', 'All', [
     'All', 'Apparel', 'Appliances', 'ArtsAndCrafts', 'Automotive', 'Baby', 'Beauty', 'Blended', 'Books'
     'Classical', 'Collectibles', 'DigitalMusic', 'DVD', 'Electronics', 'ForeignBooks', 'Garden'
     'GroumetFoot', 'Grocery', 'HealthPersonalCare', 'Hobbies', 'Home', 'HomeGarden', 'HomeImprovement'
@@ -41,7 +41,8 @@ DEFINITIONS = [
   new IntegerParameterDefinition 'VariationPage', undefined, (page) ->
     if not (1 <= page <= 150)
       throw "VariationPage has to belong to [1,150] range"
-  new EnumParameterDefition 'ResponseGroup', 'Small', [
+    console.log "invoked"
+  new EnumParameterDefinition 'ResponseGroup', 'Small', [
     'Accessories'
     'BrowseNodes'
     'EditorialReview'

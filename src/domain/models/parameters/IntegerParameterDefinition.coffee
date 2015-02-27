@@ -10,8 +10,7 @@ class IntegerParameterDefinition extends ParameterDefinition
     intValue = parseInt(value)
     if isNaN(value)
       throw new Error("Invalid integer parameter for #{@name} parameter: #{value}")
-    _.each @['validators'], (validator) ->
-      validator(intValue)
+    _.invoke @['validators'], 'call', null, intValue
     intValue
 
 module.exports = IntegerParameterDefinition
