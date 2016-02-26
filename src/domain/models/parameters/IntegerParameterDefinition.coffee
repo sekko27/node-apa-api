@@ -4,7 +4,7 @@ ParameterDefinition = require './ParameterDefinition'
 class IntegerParameterDefinition extends ParameterDefinition
   constructor: (name, defaultValue, validators, required = false) ->
     super(name, defaultValue, required)
-    @member('validators', if _.isArray(validators) then validators else [validators])
+    @validators = if _.isArray(validators) then validators else [validators]
 
   validate: (value) ->
     intValue = parseInt(value)

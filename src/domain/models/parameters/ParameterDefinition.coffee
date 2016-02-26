@@ -1,12 +1,8 @@
 _ = require 'lodash'
 ParameterFactory = require './ParameterFactory'
-ValueObject = require './../ValueObject'
 
-class ParameterDefinition extends ValueObject
-  constructor: (name, defaultValue, required) ->
-    @member('name', name)
-    @member('defaultValue', defaultValue)
-    @member('required', required)
+class ParameterDefinition
+  constructor: (@name, @defaultValue, @required) ->
 
   parameter: (value) ->
     if _.isUndefined(value)

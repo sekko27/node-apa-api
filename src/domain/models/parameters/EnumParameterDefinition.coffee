@@ -3,9 +3,8 @@ ParameterFactory = require './ParameterFactory'
 ParameterDefinition = require './ParameterDefinition'
 
 class EnumParameterDefinition extends ParameterDefinition
-  constructor: (name, defaultValue, values, required = false) ->
+  constructor: (name, defaultValue, @values, required = false) ->
     super(name, defaultValue, required)
-    @member('values', values)
 
   validate: (value) ->
     if 0 > _.indexOf(@values, value)

@@ -1,9 +1,7 @@
 _ = require 'lodash'
-ValueObject = require './../ValueObject'
 
-class Parameter extends ValueObject
-  constructor: (value) ->
-    @member('value', value)
+class Parameter
+  constructor: (@value) ->
 
 STRING_CACHE = {}
 NUMERIC_CACHE = {}
