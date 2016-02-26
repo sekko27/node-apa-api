@@ -14,31 +14,38 @@ Module provides easy access to the Amazon Product Advertising API:
 
 ## Models
 
-### APIMeta value object
+### APIMeta properties
 
-Represents API access details:
+Represents API connection details:
 
 ```coffeescript
 {APIMeta} = require 'apa-api'
-meta = new APIMeta(protocol, endPoint, service, uri, method, version)
+
+# Default options, you can skip it
+options = {
+    protocol: 'http'
+    endPoint: 'webservices.amazon.com'
+    service: 'AWSECommerceService'
+    uri: '/onca/xml'
+    method: 'GET'
+    version: '2011-08-01'
+}
+meta = new APIMeta(options)
+
 ```
-
-Where
-
-* protocol - Default to **http**
-* endPoint - Default to **webservices.amazon.com**
-* service - Default to **AWSECommerceService**
-* uri - Default to **/onca/xml**
-* method - Default to **GET**
-* version - Default to **2011-08-11**
 
 ### Credential
 
-Represents API authentication data:
+Represents API authentication data (AWS access/secret):
 
 ```coffeescript
 {Credential} = require 'apa-api'
-credential = new Credential(accessKey, secretKey, associateTag)
+options = {
+    accessKey: "Your AWS access key",
+    secretKey: "Your AWS secret key",
+    associateTag: "Associate tag"
+}
+credential = new Credential(options)
 ```
 
 ## Service
@@ -46,11 +53,14 @@ credential = new Credential(accessKey, secretKey, associateTag)
 Use this client to the Amazon Product Advertising service.
 
 ```coffeescript
-{Service} = require 'apa-api'
-service = new Service()
+{Service, ApiMeta, Credential} = require 'apa-api'
+connectionDetails = {} # See above
+credentialDetails = {} # See above
+
+service = new Service(new ApiMeta(connectionDetails), new Credentials(credentialDetails), [signer], [client])
 ```
 
-Service use the following injected members:
+Service use the following optional members:
 
 * signer - Request signer, default to **RequestSigner**
 * client - Default to [request](https://github.com/request/request)
@@ -65,10 +75,17 @@ The method checks parameters: mandatory parameters, type checking, defaults (do 
 Using defaults
 
 ```coffeescript
-{APIMeta, Crendential, Service} = require 'apa-api'
+async = require 'async'
+concat = require 'concat-stream'
+{Service, ApiMeta, Credential} = require 'apa-api'
 
-meta = new APIMeta()
-credential = new Credential('access', 'secret', 'associate')
-service = new Service(meta, service)
-service.itemLookup(ItemId: '0123456789').pipe(output)
+service = new Service(new ApiMeta(), new Credentials())
+itemIds = ['0123456789', '1234567890', '2345678901', ...]
+async.mapLimit itemIds, 5, (itemId, callback) -> 
+    service.itemLookup(itemId: itemId)
+        .on 'error', callback
+        .pipe concat (response) ->
+            # Response can contain error has been described in xml
+            # We ignore this validation in this example
+            callback(null, response)
 ```

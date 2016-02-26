@@ -3,11 +3,10 @@ RequestFactory = require './../models/RequestFactory'
 Operations = require './../models/Operations'
 defaultClient = require 'request'
 
-class APAService
-  signer: new RequestSigner()
-  client: defaultClient
+DEFAULT_SIGNER = new RequestSigner()
 
-  constructor: (apiMeta, credential) ->
+class APAService
+  constructor: (apiMeta, credential, @signer = DEFAULT_SIGNER, client = defaultClient()) ->
     @requestFactory = new RequestFactory(apiMeta, credential)
     Object.freeze(@)
 
