@@ -1,13 +1,21 @@
-ValueObject = require './ValueObject'
+_ = require 'lodash'
+Properties = require './Properties'
 moment = require 'moment'
 
-class Request extends ValueObject
-  constructor: (apiMeta, credential, operation, now) ->
-    now = now ? moment().format('YYYY-MM-DDTHH:mm:ssZ')
-    @member('apiMeta', apiMeta)
-    @member('credential', credential)
-    @member('operation', operation)
-    @member('timestamp', now)
+class Request extends Properties
+  constructor: (options, defaultCustomOptions = {}) ->
+    super(
+      options,
+      _.assign(
+        {
+          timestamp: moment().format('YYYY-MM-DDTHH:mm:ssZ')
+          apiMeta: null
+          credential: null
+          operation: ''
+        }
+        defaultCustomOptions
+      )
+    )
 
   asParams: ->
     AssociateTag: @credential.associateTag
@@ -16,8 +24,6 @@ class Request extends ValueObject
     Service: @apiMeta.service
     Timestamp: @timestamp
     Version: @apiMeta.version
-
-
 
 module.exports = Request
 

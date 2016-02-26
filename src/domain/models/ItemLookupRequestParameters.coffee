@@ -41,7 +41,6 @@ DEFINITIONS = [
   new IntegerParameterDefinition 'VariationPage', undefined, (page) ->
     if not (1 <= page <= 150)
       throw "VariationPage has to belong to [1,150] range"
-    console.log "invoked"
   new EnumParameterDefinition 'ResponseGroup', 'Small', [
     'Accessories'
     'BrowseNodes'

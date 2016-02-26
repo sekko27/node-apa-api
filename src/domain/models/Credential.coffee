@@ -1,9 +1,14 @@
-ValueObject = require './ValueObject'
+Properties = require './Properties'
 
-class Credential extends ValueObject
-  constructor: (accessKey, secretKey, associateTag) ->
-    @member 'accessKey', accessKey
-    @member 'secretKey', secretKey
-    @member 'associateTag', associateTag
+class Credential extends Properties
+  constructor: (options) ->
+    super(
+      options,
+      {
+        accessKey: ''
+        secretKey: ''
+        associateTag: ''
+      }
+    )
 
 module.exports = Credential

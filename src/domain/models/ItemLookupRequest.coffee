@@ -1,14 +1,13 @@
 _ = require 'lodash'
 Request = require './Request'
-ItemLookupRequestParameters = require './ItemLookupRequestParameters'
+
 
 class ItemLookupRequest extends Request
-  constructor: (apiMeta, credential, params, now) ->
-    super(apiMeta, credential, 'ItemLookup', now)
-    @member('params', new ItemLookupRequestParameters(params))
+  constructor: (options) ->
+    super(options, params: {})
 
   asParams: ->
-    _.merge super(), @['params'].validate()
+    _.assign {}, super(), @params?.validate()
 
 module.exports = ItemLookupRequest
 

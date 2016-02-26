@@ -1,5 +1,6 @@
 RequestSigner = require './RequestSigner'
-ItemLookupRequest = require './../models/ItemLookupRequest'
+RequestFactory = require './../models/RequestFactory'
+Operations = require './../models/Operations'
 defaultClient = require 'request'
 
 class APAService
@@ -7,12 +8,11 @@ class APAService
   client: defaultClient
 
   constructor: (apiMeta, credential) ->
-    Object.defineProperty @, 'apiMeta', get: -> apiMeta
-    Object.defineProperty @, 'credential', get: -> credential
+    @requestFactory = new RequestFactory(apiMeta, credential)
+    Object.freeze(@)
 
   itemLookup: (params) ->
-    request = new ItemLookupRequest(@apiMeta, @credential, params)
-    @request(request)
+    @request @requestFactory.newInstance Operations.ITEM_LOOKUP, params
 
   request: (request) ->
     signedUrl = @signer.sign(request)

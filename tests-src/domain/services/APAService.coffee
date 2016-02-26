@@ -15,15 +15,16 @@ assert = chai.assert
 promised = require 'chai-as-promised'
 chai.use promised
 
-describe 'RequestSigner', ->
+describe 'APA service', ->
   apa = null
+
+  @timeout(20000)
 
   before (done) ->
     apiMeta = new APIMeta()
-    fs.readFile TestHelper.path('configs/test-credentials.json'), encoding: 'utf8', (err, config) ->
+    fs.readFile TestHelper.path('configs/test-credentials.json'), encoding: 'utf8', (err, credentialConfiguration) ->
       return done(err) if err
-      c = JSON.parse config
-      credential = new Credential c.accessKey, c['secretKey'], c['associateTag']
+      credential = new Credential JSON.parse(credentialConfiguration)
       apa = new APAService(apiMeta, credential)
       done()
 
@@ -32,6 +33,7 @@ describe 'RequestSigner', ->
       parseString response, (err, result) ->
         return done(err) if err
         assert.equal selectn('ItemLookupResponse.Items.0.Request.0.IsValid.0', result), 'True'
+        assert.equal selectn('ItemLookupResponse.Items.0.Item.0.ASIN.0', result), '0124166903'
         done()
 
     apa.itemLookup(ItemId: '0124166903', VariationPage: 70).pipe(stream)
