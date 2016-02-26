@@ -1,1 +1,2 @@
-test-credentials.json
+test-credentials.js
+!test-credentials-original.js
