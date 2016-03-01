@@ -1,4 +1,5 @@
 _ = require 'lodash'
+
 EnumParameterDefinition = require './parameters/EnumParameterDefinition'
 BooleanParameterDefinition = require './parameters/BooleanParameterDefinition'
 StringParameterDefinition = require './parameters/StringParameterDefinition'
