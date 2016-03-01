@@ -2,6 +2,8 @@ Properties = require './Properties'
 
 class APIMeta extends Properties
   constructor: (options = {}) ->
+    return new APIMeta(options) if not @
+
     super(
       options,
       {

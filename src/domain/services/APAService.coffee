@@ -7,6 +7,7 @@ DEFAULT_SIGNER = new RequestSigner()
 
 class APAService
   constructor: (apiMeta, credential, @signer = DEFAULT_SIGNER, client = defaultClient) ->
+    return new APAService(apiMeta, credential, signer, client) if not @
     @requestFactory = new RequestFactory(apiMeta, credential)
     Object.freeze(@)
 
