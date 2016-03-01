@@ -9,7 +9,6 @@ class APAService
   constructor: (apiMeta, credential, @signer = DEFAULT_SIGNER, client = defaultClient) ->
     return new APAService(apiMeta, credential, signer, client) if not @
     @requestFactory = new RequestFactory(apiMeta, credential)
-    Object.freeze(@)
 
   itemLookup: (params) ->
     @request @requestFactory.newInstance Operations.ITEM_LOOKUP, params
