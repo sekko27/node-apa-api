@@ -1,6 +1,6 @@
 {
   "name": "apa-api",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Amazon Product Advertising API client",
   "homepage": "https://github.com/sekko27/node-apa-api",
   "main": "index.js",
