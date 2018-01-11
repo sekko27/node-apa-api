@@ -25,14 +25,11 @@
   "author": "Sekko <sekko272727@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "async": "~1.5.2",
-    "lodash": "~4.5.1",
-    "moment": "~2.11.2",
-    "wire-context-helper": "~0.2.5",
-    "q": "~1.4.1",
-    "wire": "~0.10.11",
-    "URIjs": "~1.16.1",
-    "request": "~2.69.0"
+    "bluebird": "^3.5.1",
+    "lodash": "^4.17.4",
+    "moment": "^2.20.1",
+    "request": "^2.83.0",
+    "urijs": "^1.19.0"
   },
   "devDependencies": {
     "chai": "~3.5.0",
